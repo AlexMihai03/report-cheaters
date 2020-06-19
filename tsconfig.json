@@ -3,7 +3,7 @@
         "module": "commonjs",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "target": "es6",
+        "target": "es2017",
         "lib": ["es7", "esnext"],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
