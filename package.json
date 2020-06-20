@@ -12,7 +12,7 @@
     "watch-ts": "tsc --watch",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "debug": "npm run build && npm run watch-debug",
-    "server-debug": "nodemon --inspect dist/index.js",
+    "serve-debug": "nodemon --inspect dist/index.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "author": "Mihai Alexandru",
