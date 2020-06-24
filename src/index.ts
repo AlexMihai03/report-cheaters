@@ -2,6 +2,8 @@ import cors from "cors";
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
 
+import * as Database from "./common/infrastructure/database/sequelize/config";
+
 const app = express();
 
 app.use(cors());
@@ -41,6 +43,9 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app, path: "/graphql" });
 
-app.listen({ port: 8000 }, () => {
-  console.log("[Server] Apollo Server on http://localhost:8000/graphql");
+
+Database.connection.sync({ force: true }).then(() => {
+  app.listen({ port: 8000 }, () => {
+    console.log("[Server] Apollo Server on http://localhost:8000/graphql");
+  });
 });
