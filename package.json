@@ -5,25 +5,29 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run serve",
-    "serve": "node dist/index.js",
+    "serve": "cross-env NODE_ENV=development node dist/index.js",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build": "npm run build-ts && npm run tslint",
     "build-ts": "tsc",
     "watch-ts": "tsc --watch",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "debug": "npm run build && npm run watch-debug",
-    "serve-debug": "nodemon --inspect dist/index.js",
+    "serve-debug": "cross-env NODE_ENV=development nodemon --inspect dist/index.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "author": "Mihai Alexandru",
   "license": "ISC",
   "devDependencies": {
+    "@types/bluebird": "^3.5.32",
     "@types/chai": "^4.2.11",
     "@types/graphql": "^14.5.0",
     "@types/mocha": "^7.0.2",
     "@types/uuid": "^8.0.0",
+    "@types/validator": "^13.0.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "chai": "^4.2.0",
     "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
     "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
@@ -37,6 +41,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.1.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.13",
     "uuid": "^8.1.0"
   }
 }
