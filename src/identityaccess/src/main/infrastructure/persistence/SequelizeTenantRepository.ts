@@ -30,6 +30,7 @@ export class SequelizeTenantRepository implements ITenantRepository {
 
   public remove(tenant: Tenant): Promise<void> {
     const TenantModel = this.models.Tenant;
+
     return TenantModel.destroy({
       where: {
         id: tenant.id.toString(),
@@ -55,9 +56,11 @@ export class SequelizeTenantRepository implements ITenantRepository {
         id: tenantId.toString(),
       },
     });
+
     if (!!tenant === false) {
       throw new Error("Tenant not found.");
     }
+
     return TenantMap.toDomain(tenant);
   }
 }
