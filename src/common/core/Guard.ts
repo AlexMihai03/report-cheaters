@@ -50,4 +50,15 @@ export class Guard {
       return { succeeded: true };
     }
   }
+
+  public static againstNullOrUndefinedBulk(args: GuardArgumentCollection): IGuardResult {
+    for (const arg of args) {
+      const result = this.againstNullOrUndefined(arg.argument, arg.argumentName);
+      if (!result.succeeded) {
+        return result;
+      }
+
+      return { succeeded: true };
+    }
+  }
 }
