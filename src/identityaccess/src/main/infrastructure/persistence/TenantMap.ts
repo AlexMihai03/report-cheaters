@@ -9,7 +9,7 @@ export class TenantMap implements Mapper<Tenant> {
       name: raw.name,
       description: raw.description,
       active: raw.active,
-      registrationInvitations: [],
+      registrationInvitations: new Set(),
     }, new UniqueEntityID(raw.id));
 
     tenantOrError.isFailure ? console.log(tenantOrError.error) : "";
